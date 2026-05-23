@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年度 時事問題 定期テスト予想問題</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: #f0f4f8;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 30px 15px;
+            box-sizing: border-box;
+        }
+        header {
+            background: linear-gradient(135deg, #1a365d, #2a4365);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        header p {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            padding: 4px 15px;
+            border-radius: 20px;
+        }
+        .toolbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+        }
+        .btn {
+            background-color: #ffffff;
+            color: #4a5568;
+            border: 1px solid #cbd5e0;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+        .btn:hover {
+            background-color: #edf2f7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background-color: #3182ce;
+            color: white;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #2b6cb0;
+        }
+        .category-section {
+            margin-bottom: 40px;
+        }
+        .category-title {
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #e2e8f0;
+            color: #2c5282;
+            padding: 12px 18px;
+            border-left: 6px solid #3182ce;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        .qa-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+        }
+        .qa-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+        }
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+        .question-num {
+            color: #3182ce;
+            font-weight: 800;
+            margin-right: 6px;
+        }
+        .answer-wrapper {
+            position: relative;
+            perspective: 1500px;
+            cursor: pointer;
+            min-height: 54px;
+        }
+        .answer-content {
+            background-color: #f0fff4;
+            border: 1px solid #c6f6d5;
+            padding: 14px 20px;
+            border-radius: 8px;
+            color: #22543d;
+            font-size: 16px;
+            font-weight: bold;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .answer-label {
+            color: #38a169;
+            margin-right: 12px;
+            font-weight: 900;
+            background: #e6fffa;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #b2f5ea;
+            flex-shrink: 0;
+        }
+        .cover-sheet {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e53e3e, #9b2c2c);
+            color: white;
+            border-radius: 8px;
+            transform-origin: left center;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s, box-shadow 0.6s;
+            box-shadow: 3px 4px 10px rgba(155, 44, 44, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            user-select: none;
+            -webkit-user-select: none;
+            box-sizing: border-box;
+            padding: 10px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        /* 本の折り目・影をリアルに再現 */
+        .cover-sheet::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0));
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        /* 右端に少しめくれそうな光沢を付与 */
+        .cover-sheet::after {
+            content: '➔';
+            position: absolute;
+            right: 15px;
+            font-size: 12px;
+            opacity: 0.7;
+            transition: transform 0.3s;
+        }
+        /* ホバー時にリアルに少し浮いてめくれかける挙動 */
+        .answer-wrapper:not(.revealed):hover .cover-sheet {
+            transform: rotateY(-14deg);
+            box-shadow: 12px 8px 20px rgba(0,0,0,0.22);
+        }
+        .answer-wrapper:not(.revealed):hover .cover-sheet::after {
+            transform: translateX(3px);
+        }
+        /* クリック・タップ時にリアルにパタッと左にめくれる */
+        .answer-wrapper.revealed .cover-sheet {
+            transform: rotateY(-145deg);
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 13px;
+            color: #718096;
+            padding-bottom: 20px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>2026年度 時事問題 定期テスト予想問題</h1>
+            <p>対象期間：2026年4月1日〜5月20日</p>
+        </header>
+
+        <div class="toolbar">
+            <button class="btn btn-primary" onclick="revealAll()">すべての答えを表示</button>
+            <button class="btn" onclick="hideAll()">すべての答えを隠す</button>
+        </div>
+
+        <div id="quiz-content"></div>
+
+        <footer>
+            2026 定期テスト対策 時事問題一問一答 クイズアプリ
+        </footer>
+    </div>
+
+    <script>
+        // 問題データ
+        const quizData = [
+            {
+                "category": "【第1問】国内政治・法律",
+                "questions": [
+                    {"num": "問1", "q": "2026年4月1日から施行された、自転車の交通違反に対する新制度を何というか。また、対象となる年齢は何歳以上か。", "a": "反則金制度（自転車反則金制度）　／　16歳以上"},
+                    {"num": "問2", "q": "2026年4月1日、離婚後の子どもの親権について法律が変わった。新たに選択可能になった制度を何というか。", "a": "共同親権"},
+                    {"num": "問3", "q": "2026年4月21日、政府が改正した「防衛装備移転三原則」により、新たに可能になったことを簡潔に述べよ。", "a": "同志国への殺傷武器（防衛装備品）の移転"},
+                    {"num": "問4", "q": "2026年5月15日、政府が閣議決定した、無実の人が冤罪で有罪となった場合の救済に関わる制度の見直しとは何か。", "a": "再審制度の見直し（再審法改正案の閣議決定）"}
+                ]
+            },
+            {
+                "category": "【第2問】経済・産業",
+                "questions": [
+                    {"num": "問5", "q": "2026年4月27日、日経平均株価が初めて突破した価格はいくらか。", "a": "6万円（60,000円）"},
+                    {"num": "問6", "q": "2026年5月7日、日経平均株価が更新した史上最高値はおよそいくらか。", "a": "6万3千円台（約63,000円）"},
+                    {"num": "問7", "q": "2026年4月30日〜5月1日、円相場が急騰し1ドル（　　）円台となった。この介入を示唆したのは（　　）財務大臣である。空欄を埋めよ。", "a": "155円台　／　片山さつき"},
+                    {"num": "問8", "q": "2026年5月8日、トヨタ自動車が達成した、日本企業として初めて突破した年間売上高の金額はいくらか。", "a": "50兆円"},
+                    {"num": "問9", "q": "2026年4月20日、アメリカの大手IT企業Appleで約15年ぶりのトップ交代が発表された。退任するCEOは誰か。", "a": "ティム・クック"}
+                ]
+            },
+            {
+                "category": "【第3問】国際情勢",
+                "questions": [
+                    {"num": "問10", "q": "2026年4月初頭〜5月にかけて、アメリカが軍事攻撃を行った中東の国はどこか。", "a": "イラン"},
+                    {"num": "問11", "q": "上記の紛争に関連し、4月13日にトランプ大統領が発表した、石油輸送の要所に関わる措置を何というか。", "a": "ホルムズ海峡の逆封鎖"},
+                    {"num": "問12", "q": "2026年5月2日、高市首相がベトナムを訪問し、首脳会談を行った。この会談で両国が強化するとした枠組みの名称をアルファベットで答えよ。", "a": "FOIP（自由で開かれたインド太平洋）"}
+                ]
+            },
+            {
+                "category": "【第4問】社会・環境・科学",
+                "questions": [
+                    {"num": "問13", "q": "2026年4月24日から、航空機内での（　　）の使用が完全禁止となり、持ち込みは最大（　　）個までとなった。空欄を埋めよ。", "a": "モバイルバッテリー　／　2個"},
+                    {"num": "問14", "q": "2026年4月20日、三陸沖で発生した地震のマグニチュードはいくつか。また、この地震を受けて気象庁が発表した情報の名称を答えよ。", "a": "M7.7　／　北海道・三陸沖後発地震注意情報"},
+                    {"num": "問15", "q": "総務省が2026年5月5日「こどもの日」にあわせて発表した統計によると、15歳未満の子どもの数は何万人で、何年連続の減少か。また、総人口に占める割合は何％か。", "a": "1329万人　／　45年連続　／　10.8%"},
+                    {"num": "問17", "q": "2026年5月8日、任天堂がSwitch 2の値上げを発表した。要因は何か。", "a": "（AIデータセンターの急速な整備が一因とされる）半導体不足"}
+                ]
+            }
+        ];
+
+        // ページの読み込みが完了したら問題を生成
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentDiv = document.getElementById('quiz-content');
+
+            quizData.forEach(section => {
+                const secElement = document.createElement('div');
+                secElement.className = 'category-section';
+
+                const title = document.createElement('div');
+                title.className = 'category-title';
+                title.innerText = section.category;
+                secElement.appendChild(title);
+
+                section.questions.forEach(q => {
+                    const card = document.createElement('div');
+                    card.className = 'qa-card';
+
+                    const qText = document.createElement('div');
+                    qText.className = 'question-text';
+                    qText.innerHTML = `<span class="question-num">${q.num}．</span>${q.q}`;
+                    card.appendChild(qText);
+
+                    const ansWrapper = document.createElement('div');
+                    ansWrapper.className = 'answer-wrapper';
+                    ansWrapper.onclick = function() {
+                        this.classList.toggle('revealed');
+                    };
+
+                    const ansContent = document.createElement('div');
+                    ansContent.className = 'answer-content';
+                    ansContent.innerHTML = `<span class="answer-label">正解</span><span>${q.a}</span>`;
+                    ansWrapper.appendChild(ansContent);
+
+                    const cover = document.createElement('div');
+                    cover.className = 'cover-sheet';
+                    cover.innerText = 'タップしてめくる';
+                    ansWrapper.appendChild(cover);
+
+                    card.appendChild(ansWrapper);
+                    secElement.appendChild(card);
+                });
+
+                contentDiv.appendChild(secElement);
+            });
+        });
+
+        // ボタンの機能
+        function revealAll() {
+            document.querySelectorAll('.answer-wrapper').forEach(el => el.classList.add('revealed'));
+        }
+
+        function hideAll() {
+            document.querySelectorAll('.answer-wrapper').forEach(el => el.classList.remove('revealed'));
+        }
+    </script>
+</body>
+</html>
